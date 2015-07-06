@@ -1,0 +1,11 @@
+{
+    "require": {
+        "league/oauth2-client": "0.12.*",
+        "uberboom/oauth2-basecamp": "0.1.*",
+        "netvlies/basecamp-php": "~1.0@dev",
+        "slim/slim": "3.x-dev",
+        "vlucas/phpdotenv": "~2.1@dev",
+        "slim/twig-view": "dev-master"
+    },
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    {% if userDetails %}
+        <h3>API</h3>
+        <ul>
+            <li>
+                <a href="{{ basePath }}{{ path_for('api/basecamp/projects') }}" target="_blank">Projects</a>
+                <ul>
+                {% for project in projects %}
+                    <li>
+                        <a href="{{ basePath }}{{ path_for('api/basecamp/projects/id/todolists', { 'projectId': project.id }) }}" target="_blank">{{ project.name }}</a>
+                        <ul>
+                        {% for todolist in todolists[project.id] %}
+                            <li>
+                                <a href="{{ basePath }}{{ path_for('api/basecamp/projects/id/todolists/id', { 'projectId': project.id, 'todolistId': todolist.id }) }}" target="_blank">{{ todolist.name }}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+                </ul>
+            </li>
+            <li>
+                <a href="{{ basePath }}{{ path_for('api/basecamp/people') }}" target="_blank">People</a>
+            </li>
+        </ul>
+    {% endif %}
+
+{% endblock %}

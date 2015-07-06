@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resource Plan</title>
+</head>
+<body>
+
+{% if userDetails %}
+    Welcome, {{ userDetails.firstName }} {{ userDetails.lastName }}!
+{% endif %}
+
+<main>
+    {% if basecampAccounts %}
+        <h3>Switch Basecamp Account</h3>
+        <ul>
+            {% for account in basecampAccounts %}
+            <li><a href="{{ basePath }}{{ path_for('account/switch', { 'id': account.id }) }}">{{ account.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% block body %}
+{% endblock %}
+
+</main>
+
+<footer>
+    <h3>Debug</h3>
+    <ul>
+        <li>
+            <a href="{{ basePath }}{{ path_for('debug') }}">Debug</a>
+        </li>
+    </ul>
+    {# {{ dump() }} #}
+    <h3>Auth</h3>
+    <ul>
+    {% if userDetails %}
+        <li><a href="{{ basePath }}{{ path_for('logout') }}">Logout</a></li>
+    {% else %}
+        <li><a href="{{ basePath }}{{ path_for('login') }}">Login</a></li>
+    {% endif %}
+    </ul>
+</footer>
+
+</body>
+</html>
